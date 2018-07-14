@@ -61,3 +61,13 @@ int main()
         printf("\n");
     }
 }
+
+//Python3
+numberOfInputs,inputs=int(input()),[]
+def mergepair(str1,str2):
+    if not(str1 and str2):
+        return str1+str2
+    return str1[0]+str2[0]+mergepair(str1[1:],str2[1:])
+for ctr in range(0,numberOfInputs):
+    inputs=input().split()
+    print(mergepair(inputs[0],inputs[1]))
