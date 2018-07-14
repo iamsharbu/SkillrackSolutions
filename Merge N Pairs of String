@@ -1,1 +1,63 @@
+Merge N Pairs of String
+The program must accept an integer N and N pairs of strings. Then the program must merge every pair of strings and print the merged string.
+Boundary Condition(s):
+2 <= N <= 100
+1 <= Length of String <= 1000
+Input Format:
+The first line contains N.
+The next N lines contain two strings each.
+Output Format:
+The first N lines contain the merged strings.
+Example Input/Output 1:
+Input:
+2
+good bye
+take care
+Output:
+gboyoed
+tcaakree
+Example Input/Output 2:
+Input:
+3
+cool buddy
+think well
+welcome tin
+Output:
+cbouodldy
+twheilnlk
+wteilncome
 
+SOLUTION:
+
+//C
+#include<stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int numberOfInputs;
+    scanf("%d\n",&numberOfInputs);
+    char inputs[numberOfInputs][1000];
+    for(int ctr=0;ctr<numberOfInputs;ctr++)
+        fgets(inputs[ctr],1000,stdin);
+    for(int ctr=0;ctr<numberOfInputs;ctr++)
+    {
+        int start=0,space=-1,end=-1,index=0;
+        while(inputs[ctr][index]!='\n'&&inputs[ctr][index]!='\r')
+            index++;
+        end=index;
+        index=0;
+        while(inputs[ctr][index]!=' ')
+            index++;
+        space=index;
+        index++;
+        while(start<space&&index<end)
+            printf("%c%c",inputs[ctr][start++],inputs[ctr][index++]);
+        if(start<space)
+            while(start<space)
+                printf("%c",inputs[ctr][start++]);
+        else
+            while(index<end)
+                printf("%c",inputs[ctr][index++]);
+        printf("\n");
+    }
+}
